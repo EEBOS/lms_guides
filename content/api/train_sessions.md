@@ -82,3 +82,13 @@ To retrieve a specific train session send a `GET` request to:
 
 `GET https://learninglogin.com/api/train_sessions/train_session_id`
 
+
+
+
+### Unassign train sessions
+
+To unassign train sessions send a `POST` request to:
+
+`POST https://learninglogin.com/api/train_sessions/unassign?ids=[ids]`
+
+ids=[] is an array of train sessions ids
