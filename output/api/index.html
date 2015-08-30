@@ -61,9 +61,13 @@
         
         <p>If your authentication token is not correct, you will receive a “HTTP Token: Access Denied” response.</p>
         
-        <p>All of our API responses are sent in <code>JSON</code> or <code>XML</code> depending on request format.</p>
+        <p>All of our API responses are sent in <code>JSON</code> or <code>XML</code> depending on the format requested.</p>
         
-        <p>NOTE: Remember to send header request format as <code>application/xml</code> and add sufix .xml for XML requests.</p>
+        <p>When no suffix is specified, <code>JSON</code> is the default format. To request <code>XML</code>, make sure to send a <code>Content-Type</code> header of <code>application/xml</code> and add <code>.xml</code> as a suffix to all URLs.</p>
+        
+        <p>All <code>XML</code> requests and responses tags are underscored, example:</p>
+        
+        <pre><code class="language-xml"><span class="nt">&lt;content&gt;</span>&#x000A;  <span class="nt">&lt;course_codes</span> <span class="na">type=</span><span class="s">"array"</span><span class="nt">&gt;</span>&#x000A;     <span class="nt">&lt;course_code&gt;</span>WH1<span class="nt">&lt;/course_code&gt;</span>&#x000A;     <span class="nt">&lt;course_code&gt;</span>WH2<span class="nt">&lt;/course_code&gt;</span>&#x000A;  <span class="nt">&lt;/course_codes&gt;</span>&#x000A;<span class="nt">&lt;/content&gt;</span></code></pre>
         
         <h1 id="services">Services</h1>
         

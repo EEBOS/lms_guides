@@ -18,11 +18,22 @@ It is possible for your users to access our fully-featured LMS using their API c
   | username | string | yes       |                                             |            |
   | token    | string | yes       | Login token provided when login is created  |
   
+#### XML Sample Request
+
+`POST https://learninglogin.com/api/logins/request_token.xml`
+
+~~~xml
+<?xml version="1.0" encoding="UTF-8"?>
+<content>
+  <username>user_name</username>
+  <token>6300d0cfd5c682dd25838aa23e122d36</token>
+</content>
+~~~
 
 2.
   Use the token to access the LMS
 
-  `GET https://learninglogin.com/api/logins/authenticate`
+  `GET https://learninglogin.com/api/logins/authenticate?username=user_name&token=10e6eacc77745658934b14718cb1210`
 
   Send a `GET` request to the URL above with the following parameters:
 
@@ -34,3 +45,9 @@ It is possible for your users to access our fully-featured LMS using their API c
 After step 2 is completed, you will be **redirected** to `https://learninglogin.com/en/inventories`
 
 Once you access the LMS with your token, it **cannot be reused**. If your session is closed or expired, you will need to repeat this process in order to regain access to our LMS.
+
+#### XML Sample Request
+
+ `GET https://learninglogin.com/api/logins/authenticate.xml?username=user_name&token=10e6eacc77745658934b14718cb1210`
+
+Parameters should be sent like the URL above just like in a JSON call

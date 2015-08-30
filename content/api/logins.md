@@ -23,7 +23,7 @@ To retrieve the list of logins from your account, simply send a `GET` request to
 
 `GET https://learninglogin.com/api/logins`
 
-#### JSON Sample Response Body
+#### JSON Sample Response Body: Success
 
 ~~~json
 [
@@ -50,27 +50,27 @@ To retrieve the list of logins from your account, simply send a `GET` request to
 
 `GET https://learninglogin.com/api/logins.xml`
 
-#### XML Sample Response Body
+#### XML Sample Response Body: Success
 
 ~~~xml
 <?xml version="1.0" encoding="UTF-8"?>
 <logins type="array">
    <login>
       <id type="integer">123456</id>
-      <first-name>Demo</first-name>
-      <last-name>Login</last-name>
+      <first_name>Demo</first_name>
+      <last_name>Login</last_name>
       <username>demo_login</username>
       <email>demo_login@learninglogin.com</email>
       <role>Admin</role>
    </login>
    <login>
       <id type="integer">123457</id>
-      <first-name>Demo</first-name>
-      <last-name>Login2</last-name>
+      <first_name>Demo</first_name>
+      <last_name>Login2</last_name>
       <username>demo_login2</username>
       <email>demo_login2@learninglogin.com</email>
       <role>Trainee</role>
-   </login>   
+   </login>
 </logins>
 ~~~
 
@@ -84,7 +84,7 @@ To retrieve the details of a particular login from your account, send a `GET` re
 
 `GET https://learninglogin.com/api/logins/:id`
 
-#### JSON Sample Response Body
+#### JSON Sample Response Body: Success
 
 ~~~json
   {
@@ -98,11 +98,21 @@ To retrieve the details of a particular login from your account, send a `GET` re
   }
 ~~~
 
+####  JSON Sample Response Body: Failure
+
+Errors will be responded with a `HTTP 422` error code, and an error description.
+
+~~~json
+  {
+    "errors": "Login not found"
+  }
+~~~
+
 #### XML Sample Request
 
 `GET https://learninglogin.com/api/logins/:id.xml`
 
-#### XML Sample Response Body
+#### XML Sample Response Body: Success
 
 `GET https://learninglogin.com/api/logins/:id.xml`
 
@@ -110,13 +120,22 @@ To retrieve the details of a particular login from your account, send a `GET` re
 <?xml version="1.0" encoding="UTF-8"?>
 <login>
    <id type="integer">1</id>
-   <first-name>Demo</first-name>
-   <last-name>Login</last-name>
+   <first_name>Demo</first_name>
+   <last_name>Login</last_name>
    <username>demo_login</username>
    <email>demo_login@learninglogin.com</email>
    <role>Admin</role>   
    <token>bca51ae57828gf8gf7878gfd87</token>
 </login>
+~~~
+
+#### XML Sample Response Body: Failure
+
+~~~xml
+<?xml version="1.0" encoding="UTF-8"?>
+<errors>
+   <error>Login not found</error>
+</errors>
 ~~~
 
 ### Create
@@ -153,7 +172,7 @@ To create a new login, send a `POST` request to the URL above, it must contain t
   }
 ~~~
 
-#### JSON Sample Response Body
+#### JSON Sample Response Body: Success
 
 When a `login` is successfully  created, our API will send a response with the newly created information:
 
@@ -189,30 +208,30 @@ Errors will be responded with a `HTTP 422` error code and an error description.
 ~~~xml
 <?xml version="1.0" encoding="UTF-8"?>
 <login>
-   <first-name>first</first-name>
-   <last-name>last</last-name>
+   <first_name>first</first_name>
+   <last_name>last</last_name>
    <email>login@mail.com</email>
    <username>username</username>
-   <udf-list type="array">
-     <udf>accounting</udf>
-     <udf>service</udf>
-   </udf-list>
-   <role-string>Trainee</role-string>
+   <udf_list type="array">
+      <udf>accounting</udf>
+      <udf>service</udf>
+   </udf_list>
+   <role_string>Trainee</role_string>
    <password>abc123</password>
 </login>
 ~~~
 
-#### XML Sample Response Body
+#### XML Sample Response Body: Success
 
 ~~~xml
 <?xml version="1.0" encoding="UTF-8"?>
 <login>
    <id type="integer">2</id>
-   <first-name>first</first-name>
-   <last-name>last</last-name>
+   <first_name>first</first_name>
+   <last_name>last</last_name>
    <username>username</username>
    <email>login@mail.com</email>
-    <role-string>Trainee</role-string>   
+   <role_string>Trainee</role_string>   
    <token>bca51ae57828gf8gf7878gfd87</token>   
 </login>
 ~~~
@@ -252,7 +271,7 @@ An example request body to update a login's name might be:
 
 When the login is successfully updated, our API will send a response with all of the updated login’s information (including fields that were *not* updated).
 
-#### JSON Sample Response Body
+#### JSON Sample Response Body: Success
 
 ~~~json
   {
@@ -281,21 +300,25 @@ Errors will be sent with a `HTTP 422 error code, and an error description.
 
 `PUT https://learninglogin.com/api/logins/:id.xml`
 
+
 ~~~xml
 <?xml version="1.0" encoding="UTF-8"?>
 <login>
-   <first-name>name</first-name>
+   <first_name>name</first_name>
 </login>
 ~~~
 
-#### XML Sample Response Body
+#### XML Sample Response Body: Success
+
+The XML attributes should be sent inside tag `<login>`. 
+An example request body to update a login's name might be:
 
 ~~~xml
 <?xml version="1.0" encoding="UTF-8"?>
 <login>
    <id>2</id>
-   <first-name>name</first-name>
-   <last-name>last</last-name>
+   <first_name>name</first_name>
+   <last_name>last</last_name>
    <username>username</username>
    <email>login@mail.com</email>
    <role>Trainee</role>
@@ -327,9 +350,27 @@ If anything goes wrong, the API will respond with a `HTTP 422` error code and an
 
 `DELETE https://learninglogin.com/api/logins/:id`
 
+#### JSON Sample Response Body: Failure
+
+Errors will be sent with a `HTTP 422 error code, and an error description.
+
+~~~json
+{ 
+  "errors"=>"Could not delete the login"
+}
+~~~
+
 #### XML Sample Request
 
 `DELETE https://learninglogin.com/api/logins/:id.xml`
 
+#### XML Sample Response Body: Failure
 
+Errors will be sent with a `HTTP 422 error code, and an error description.
 
+~~~xml
+<?xml version="1.0" encoding="UTF-8"?>
+<errors type="array">
+   <error>Could not delete the login</error>
+</errors>
+~~~

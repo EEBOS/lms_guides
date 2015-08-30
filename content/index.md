@@ -27,7 +27,18 @@ If your authentication token is not correct, you will receive a “HTTP Token: A
 
 All of our API responses are sent in `JSON` or `XML` depending on the format requested.
 
-When no suffix is specified, JSON is the default format. To request XML, make sure to send a Content-Type header of `application/xml` and add `.xml` as a suffix to all requests.
+When no suffix is specified, `JSON` is the default format. To request `XML`, make sure to send a `Content-Type` header of `application/xml` and add `.xml` as a suffix to all URLs.
+
+All `XML` requests and responses tags are underscored, example:
+
+~~~xml
+<content>
+  <course_codes type="array">
+     <course_code>WH1</course_code>
+     <course_code>WH2</course_code>
+  </course_codes>
+</content>
+~~~
 
 # Services
 

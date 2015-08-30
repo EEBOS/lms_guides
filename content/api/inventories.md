@@ -30,7 +30,7 @@ To assign units to a user, send a `POST` request to the URL above with the follo
   }
 ~~~
 
-#### JSON Sample Response Body
+#### JSON Sample Response Body: Success
 
 When courses are successfully assigned, our API will send an empty `JSON` hash as a response: `{ }`
 If the assignation requires an extra payment, the response body will include the `extra_payment` key. Example:
@@ -58,22 +58,22 @@ If something goes wrong, the API will respond with a `HTTP 422` error code and t
 ~~~xml
 <?xml version="1.0" encoding="UTF-8"?>
 <content>
-  <course-codes type="array">
-     <course-code>JHSC</course-code>    
-  </course-codes>
-  <login-ids type="array">
-     <login-id type="integer">1</login-id>
-     <login-id type="integer">2</login-id>
-  </login-ids>
+  <course_codes type="array">
+     <course_code>JHSC</course_code>    
+  </course_codes>
+  <login_ids type="array">
+     <login_id type="integer">1</login_id>
+     <login_id type="integer">2</login_id>
+  </login_ids>
 </content>
 ~~~
 
-#### XML Sample Response Body
+#### XML Sample Response Body: Success
 
 ~~~xml
 <?xml version="1.0" encoding="UTF-8"?>
 <content>
-   <extra-payment>1</extra-payment>
+   <extra_payment>1</extra_payment>
 </content>
 ~~~
 

@@ -44,7 +44,7 @@ All date parameters should be sent in a `YYYY-MM-DD` format.
 
 The above request would fetch all training sessions completed from Jan 1st 2015 onwards with a score of "80" percent.
 
-####  JSON Sample Response Body
+####  JSON Sample Response Body: Success
 
 ~~~json
 [
@@ -90,51 +90,51 @@ The above request would fetch all training sessions completed from Jan 1st 2015 
 
 `GET https://learninglogin.com/api/train_sessions.xml?score_eq=80&completion_date_gteq=2015-01-01`
 
-#### XML Sample Response Body
+#### XML Sample Response Body: Success
 
 ~~~xml
 <?xml version="1.0" encoding="UTF-8"?>
-<train-sessions type="array">
-   <train-session>
+<train_sessions type="array">
+   <train_session>
       <id type="integer">3</id>
-      <course-code>WHMIS</course-code>
+      <course_code>WHMIS</course_code>
       <score type="integer">80</score>
-      <percent-complete type="integer">100</percent-complete>
-      <failed-attempts type="integer">0</failed-attempts>
+      <percent_complete type="integer">100</percent_complete>
+      <failed_attempts type="integer">0</failed_attempts>
       <status>Completed</status>
-      <cert-expiry type="date">2016-02-06</cert-expiry>
-      <completion-date>2015-01-01</completion-date>
-      <complete-by nil="true" />
-      <full-name>Michelle Dragstra</full-name>
-      <time-spent type="decimal">0.0</time-spent>      
-   </train-session>
-   <train-session>
+      <cert_expiry type="date">2016-02-06</cert_expiry>
+      <completion_date>2015-01-01</completion_date>
+      <complete_by nil="true" />
+      <full_name>Michelle Dragstra</full_name>
+      <time_spent type="decimal">0.0</time_spent>      
+   </train_session>
+   <train_session>
       <id type="integer">2</id>
-      <course-code>TDG</course-code>
+      <course_code>TDG</course_code>
       <score type="integer">80</score>
-      <percent-complete type="integer">100</percent-complete>
-      <failed-attempts type="integer">0</failed-attempts>
+      <percent_complete type="integer">100</percent_complete>
+      <failed_attempts type="integer">0</failed_attempts>
       <status>Completed</status>
-      <cert-expiry type="date">2016-08-04</cert-expiry>
-      <completion-date>2015-01-02</completion-date>
-      <complete-by nil="true" />
-      <full-name>Michelle Dragstra</full-name>
-      <time-spent type="decimal">0.0</time-spent>      
-   </train-session>
-   <train-session>
+      <cert_expiry type="date">2016-08-04</cert_expiry>
+      <completion_date>2015-01-02</completion_date>
+      <complete_by nil="true" />
+      <full_name>Michelle Dragstra</full_name>
+      <time_spent type="decimal">0.0</time_spent>      
+   </train_session>
+   <train_session>
       <id type="integer">1</id>
       <score type="integer">80</score>
-      <course-code>FP</course-code>
-      <percent-complete type="integer">100</percent-complete>
-      <failed-attempts type="integer">0</failed-attempts>
+      <course_code>FP</course_code>
+      <percent_complete type="integer">100</percent_complete>
+      <failed_attempts type="integer">0</failed_attempts>
       <status>Completed</status>
-      <cert-expiry type="date">2016-08-04</cert-expiry>
-      <completion-date>2015-01-03</completion-date>
-      <complete-by nil="true" />
-      <full-name>Michelle Dragstra</full-name>
-      <time-spent type="decimal">0.0</time-spent>      
-   </train-session>
-</train-sessions>
+      <cert_expiry type="date">2016-08-04</cert_expiry>
+      <completion_date>2015-01-03</completion_date>
+      <complete_by nil="true" />
+      <full_name>Michelle Dragstra</full_name>
+      <time_spent type="decimal">0.0</time_spent>      
+   </train_session>
+</train_sessions>
 ~~~
 
 ### Show
@@ -147,7 +147,7 @@ To retrieve a particular train session send a `GET` request to:
 
 `GET https://learninglogin.com/api/train_sessions/:id`
 
-#### JSON Sample Response
+#### JSON Sample Response: Success
 
 ~~~json
 {
@@ -170,24 +170,24 @@ To retrieve a particular train session send a `GET` request to:
 
 `GET https://learninglogin.com/api/train_sessions/:id.xml`
 
-#### XML Sample Response Body
+#### XML Sample Response Body: Success
 
 ~~~xml
 <?xml version="1.0" encoding="UTF-8"?>
-<train-session>
+<train_session>
    <id type="integer">1</id>
    <score type="integer">0</score>
-   <percent-complete type="integer">0</percent-complete>
-   <failed-attempts type="integer">0</failed-attempts>
+   <percent_complete type="integer">0</percent_complete>
+   <failed_attempts type="integer">0</failed_attempts>
    <status>Assigned</status>
-   <cert-expiry type="date">2016-08-04</cert-expiry>
-   <completion-date nil="true" />
-   <complete-by nil="true" />
-   <full-name>Michelle Dragstra</full-name>
-   <time-spent type="decimal">0.0</time-spent>
-   <course-code>WMIS</course-code>
+   <cert_expiry type="date">2016-08-04</cert_expiry>
+   <completion_date nil="true" />
+   <complete_by nil="true" />
+   <full_name>Michelle Dragstra</full_name>
+   <time_spent type="decimal">0.0</time_spent>
+   <course_code>WMIS</course_code>
    <success nil="true" />
-</train-session>
+</train_session>
 ~~~
 
 ### Unassign
@@ -223,22 +223,58 @@ Note: Remember to add `type='array'` to `<course-codes>` tag and all parameters 
 ~~~xml
 <?xml version='1.0' encoding='UTF-8'?>
 <content>  
-  <course-codes type='array'>
-    <course-code>JHSC</course-code> 
-  </course-codes>
-  <login-id type='integer'>1</login-id>
+  <course_codes type='array'>
+    <course_code>JHSC</course_code> 
+  </course_codes>
+  <login_id type='integer'>1</login_id>
+</content>
+~~~
+
+#### JSON Sample Response Body: Success
+
+When one or more `train_sessions` are successfully destroyed, our API will send an `HTTP 200` response with an empty body.
+
+#### JSON Sample Response Body: Failure
+If *none* of the specified courses are found for the login sent, the API will respond with an `HTTP 200` response with the following message:
+
+~~~json
+  {
+    "errors"=>"Could not find any corresponding train sessions."
+  }
+~~~
+
+#### XML Sample Request Body
+
+`POST https://learninglogin.com/api/train_sessions/unassign.xml`
+
+Note: Remember to add `type='array'` to `<course_codes>` tag and all parameters should be sent inside a tag `<content>`
+
+~~~xml
+<?xml version='1.0' encoding='UTF-8'?>
+<content>
+  <login_id type='integer'>3</login_id>
+  <course_codes type='array'>
+    <course_code>WH1</course_code> 
+  </course_codes>
 </content>
 ~~~
 
 #### Sample Response Body: Success
 
-When one or more `train_sessions` are successfully destroyed, our API will send an `HTTP 200` response with an empty body.
-
-#### Sample Response Body: Failure
-If *none* of the specified courses are found for the login sent, the API will respond with an `HTTP 200` response with the following message:
-
+~~~xml
+<?xml version="1.0" encoding="UTF-8"?>
+<content>
+  <message>Train session deleted successfully</message>
+</content>
 ~~~
-Could not find any corresponding train sessions.
+
+#### XML Sample Response Body: Failure
+
+~~~xml
+<?xml version="1.0" encoding="UTF-8"?>
+<errors>
+  <error>Could not find any corresponding train sessions.</error>
+</errors>
 ~~~
 
 ### Course Player
