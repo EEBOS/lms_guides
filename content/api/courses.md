@@ -12,7 +12,7 @@ NOTE: Courses are assigned to users through the `Inventories` endpoint, not the 
 
 ### Index
 
-`https://learninglogin.com/api/courses`
+`https://learninglogin.com/api/v2/courses`
 
 To retrieve the list of courses, send a `GET` request to the URL above, no extra parameters are required.
 Results are paginated following the [RFC-8288](https://tools.ietf.org/html/rfc8288) standard for web linking; links are provided
@@ -20,13 +20,13 @@ in the response headers so they can be navigated programmaticaly.
 
 #### Pagination response headers
 
-| Link &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	          |  `<https://learninglogin.com/api/courses.json?page=1>;` `rel="first"`, <br/> `<https://learninglogin.com/api/courses.json?page=1>;` `rel="prev"`, <br/>`<https://learninglogin.com/api/courses.json?page=4>;` `rel="last"`, <br/>`<https://learninglogin.com/api/courses.json?page=3>;` `rel="next"` |
+| Link &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	          |  `<https://learninglogin.com/api/v2/courses.json?page=1>;` `rel="first"`, <br/> `<https://learninglogin.com/api/v2/courses.json?page=1>;` `rel="prev"`, <br/>`<https://learninglogin.com/api/v2/courses.json?page=4>;` `rel="last"`, <br/>`<https://learninglogin.com/api/v2/courses.json?page=3>;` `rel="next"` |
 | Per-Page	      |  64                                    |
 | Total 	      |  195                                  |
 
 #### JSON Sample Request
 
-`GET https://learninglogin.com/api/courses`
+`GET https://learninglogin.com/api/v2/courses`
 
 #### Sample JSON Response Body: Success
 
@@ -49,7 +49,7 @@ in the response headers so they can be navigated programmaticaly.
 
 #### XML Sample Request
 
-`GET https://learninglogin.com/api/courses.xml`
+`GET https://learninglogin.com/api/v2/courses.xml`
 
 #### Sample XML Response Body: Success
 

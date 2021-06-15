@@ -7,13 +7,13 @@ title: Train Sessions
 
 A `TrainSession` represents a training record in the system. Train Sessions track information such as: date of completion, score, date of assignation, percent complete, etc.
 
-The `/api/train_sessions/` endpoint implements RESTful methods to let you interact with your data.
+The `/api/v2/train_sessions/` endpoint implements RESTful methods to let you interact with your data.
 
 ## Methods
 
 ### Index
 
-`https://learninglogin.com/api/train_sessions`
+`https://learninglogin.com/api/v2/train_sessions`
 
 To retrieve the list of train sessions available for your account, simply send a `GET` request to the URL above. Optionally, you can pass a series of filters for searching purposes.
 Results are paginated following the [RFC-8288](https://tools.ietf.org/html/rfc8288) standard for web linking; links are provided
@@ -21,7 +21,7 @@ in the response headers so they can be navigated programmaticaly.
 
 #### Pagination response headers
 
-| Link &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	          |  `<https://learninglogin.com/api/train_sessions.json?page=1>;` `rel="first"`, <br/> `<https://learninglogin.com/api/train_sessions.json?page=1>;` `rel="prev"`, <br/>`<https://learninglogin.com/api/train_sessions.json?page=24>;` `rel="last"`, <br/>`<https://learninglogin.com/api/train_sessions.json?page=3>;` `rel="next"` |
+| Link &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	          |  `<https://learninglogin.com/api/v2/train_sessions.json?page=1>;` `rel="first"`, <br/> `<https://learninglogin.com/api/v2/train_sessions.json?page=1>;` `rel="prev"`, <br/>`<https://learninglogin.com/api/v2/train_sessions.json?page=24>;` `rel="last"`, <br/>`<https://learninglogin.com/api/v2/train_sessions.json?page=3>;` `rel="next"` |
 | Per-Page	      |  64                                    |
 | Total 	      |  1535                                  |
 
@@ -49,7 +49,7 @@ All date parameters should be sent in a `YYYY-MM-DD` format.
 
 #### JSON Sample Request
 
-`GET https://learninglogin.com/api/train_sessions?score_eq=80&completion_date_gteq=2015-01-01`
+`GET https://learninglogin.com/api/v2/train_sessions?score_eq=80&completion_date_gteq=2015-01-01`
 
 The above request would fetch all training sessions completed from Jan 1st 2015 onwards with a score of "80" percent.
 
@@ -97,7 +97,7 @@ The above request would fetch all training sessions completed from Jan 1st 2015 
 
 #### XML Sample Request
 
-`GET https://learninglogin.com/api/train_sessions.xml?score_eq=80&completion_date_gteq=2015-01-01`
+`GET https://learninglogin.com/api/v2/train_sessions.xml?score_eq=80&completion_date_gteq=2015-01-01`
 
 #### XML Sample Response Body
 
@@ -148,13 +148,13 @@ The above request would fetch all training sessions completed from Jan 1st 2015 
 
 ### Show
 
-`https://learninglogin.com/api/train_sessions/:id`
+`https://learninglogin.com/api/v2/train_sessions/:id`
 
 To retrieve a particular train session send a `GET` request to:
 
 #### JSON Sample Request
 
-`GET https://learninglogin.com/api/train_sessions/:id`
+`GET https://learninglogin.com/api/v2/train_sessions/:id`
 
 #### JSON Sample Response
 
@@ -177,7 +177,7 @@ To retrieve a particular train session send a `GET` request to:
 
 #### XML Sample Request
 
-`GET https://learninglogin.com/api/train_sessions/:id.xml`
+`GET https://learninglogin.com/api/v2/train_sessions/:id.xml`
 
 #### XML Sample Response Body
 
@@ -201,7 +201,7 @@ To retrieve a particular train session send a `GET` request to:
 
 ### Unassign
 
-`https://learninglogin.com/api/train_sessions/unassign`
+`https://learninglogin.com/api/v2/train_sessions/unassign`
 
 To remove one or more train sessions, send a `POST` request to the url above with the following parameters:
 
@@ -214,7 +214,7 @@ The unassign endpoint allows you to unassign multiple courses for a single user.
 
 ####  JSON Sample Request Body
 
-`POST https://learninglogin.com/api/train_sessions/unassign`
+`POST https://learninglogin.com/api/v2/train_sessions/unassign`
 
 ~~~json
   {
@@ -225,7 +225,7 @@ The unassign endpoint allows you to unassign multiple courses for a single user.
 
 #### XML Sample Request Body
 
-`POST https://learninglogin.com/api/train_sessions/unassign.xml`
+`POST https://learninglogin.com/api/v2/train_sessions/unassign.xml`
 
 Note: Remember to add `type='array'` to `<course-codes>` tag and all parameters should be sent inside a tag `<content>`
 
@@ -254,7 +254,7 @@ Could not find any corresponding train sessions.
 
 To actually consume a train session through the course player, visit the url:
 
-`http://learninglogin.com/api/train_sessions/:login_id/:course_code?token=:token`
+`http://learninglogin.com/api/v2/train_sessions/:login_id/:course_code?token=:token`
 
 | Name        | Type    | Required? | Description                                                                       |
 |-------------|---------|-----------|-----------------------------------------------------------------------------------|
@@ -265,5 +265,5 @@ To actually consume a train session through the course player, visit the url:
 If you want to embed the course player into your site, just insert an `iframe` with the url above in the `src` property:
 
 ~~~html
-<iframe src="http://learninglogin.com/api/train_sessions/1/WHMIS?token=TOKENHERE"> </iframe>
+<iframe src="http://learninglogin.com/api/v2/train_sessions/1/WHMIS?token=TOKENHERE"> </iframe>
 ~~~
