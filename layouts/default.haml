@@ -11,27 +11,25 @@
         %meta{:content => "nanoc #{Nanoc::VERSION}", :name => "generator"}
   %body
     #wrapper.cf
-
       #sidebar
         %header
           %img{:src => "/img/logo.png", :class => "logo-image"}
         %h2 API
         %ul
           %li
-            = link_to_navigation 'Getting Started', '/index.html'
+            = link_to_navigation 'Getting Started', '/v2/index.html'
           %li
-            = link_to_navigation 'Logins', '/api/logins.html'
+            = link_to_navigation 'Logins', '/v2/api/logins.html'
           %li
-            = link_to_navigation 'Courses', '/api/courses.html'
+            = link_to_navigation 'Courses', '/v2/api/courses.html'
           %li
-            = link_to_navigation 'Inventories', '/api/inventories.html'
+            = link_to_navigation 'Inventories', '/v2/api/inventories.html'
           %li
-            = link_to_navigation 'Train Sessions', '/api/train_sessions.html'
+            = link_to_navigation 'Train Sessions', '/v2/api/train_sessions.html'
           %li
-            = link_to_navigation 'Certificates', '/api/certificates.html'            
+            = link_to_navigation 'Certificates', '/v2/api/certificates.html'
           %li
-            = link_to_navigation 'LMS Access', '/api/lms_access.html'
+            = link_to_navigation 'LMS Access', '/v2/api/lms_access.html'
 
       #main
         = find_and_preserve(yield)
-

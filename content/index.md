@@ -1,7 +1,14 @@
 ---
 title: API
 ---
-
+<div class="alert alert-danger" role="alert">
+  <h3>Deprecation Note</h3>
+  <p>
+    We are transitioning to a new version of the API including pagination and other improvements.
+    The following documentation describes the new version of the API. For the older docs, please visit
+    https://api.learninglogin.com/v1/
+  </p>
+</div>
 
 ## What is the OSG LMS API?
 
@@ -20,7 +27,7 @@ In order to interact with our API, you’re required to include an authenticatio
 For example, to retrieve the list of logins under your company, you can make the following request via `curl`:
 
 ```
-curl http://learninglogin.com/api/logins -H 'Authorization: Token token="TOKENHERE"'
+curl http://learninglogin.com/api/v2/logins -H 'Authorization: Token token="TOKENHERE"'
 ```
 
 If your authentication token is not correct, you will receive a “HTTP Token: Access Denied” response.
@@ -31,8 +38,8 @@ When no suffix is specified, `JSON` is the default format. To request `XML`, mak
 
 ## Services
 
-* [Logins](/api/logins.html)
-* [Courses](/api/courses.html)
-* [Inventories](/api/inventories.html)
-* [Train Sessions](/api/train_sessions.html)
-* [LMS Access](/api/lms_access.html)
+* [Logins](/v2/api/logins.html)
+* [Courses](/v2/api/courses.html)
+* [Inventories](/v2/api/inventories.html)
+* [Train Sessions](/v2/api/train_sessions.html)
+* [LMS Access](/v2/api/lms_access.html)

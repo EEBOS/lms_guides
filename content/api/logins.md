@@ -15,9 +15,17 @@ A `Login` quite simply represents a user in the system. You may create a new `Lo
 
 ### Index
 
-`https://learninglogin.com/api/logins`
+`https://learninglogin.com/api/v2/logins`
 
 To retrieve the list of logins from your account, simply send a `GET` request to the URL above, no extra parameters are required.
+Results are paginated following the [RFC-8288](https://tools.ietf.org/html/rfc8288) standard for web linking; links are provided
+in the response headers so they can be navigated programmaticaly.
+
+#### Pagination response headers
+
+| Link &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	          |  `<https://learninglogin.com/api/v2/logins.json?page=1>;` `rel="first"`, <br/> `<https://learninglogin.com/api/v2/logins.json?page=1>;` `rel="prev"`, <br/>`<https://learninglogin.com/api/v2/logins.json?page=14>;` `rel="last"`, <br/>`<https://learninglogin.com/api/v2/logins.json?page=3>;` `rel="next"` |
+| Per-Page	      |  64                                    |
+| Total 	      |  879                                   |
 
 #### Available search filters
 
@@ -29,7 +37,7 @@ If you have 'Custom Fields' activated, you can dynamically search any 'Custom Fi
 
 #### JSON Sample Request
 
-`GET https://learninglogin.com/api/logins?cf[Color]=blue`
+`GET https://learninglogin.com/api/v2/logins?cf[Color]=blue`
 
 #### JSON Sample Response Body
 
@@ -46,7 +54,7 @@ If you have 'Custom Fields' activated, you can dynamically search any 'Custom Fi
           "Color": 'Blue',
           "Position": 'IT',
           "Job Title": 'Sales Rep'
-      }      
+      }
     },
     {
       "id":123457,
@@ -66,7 +74,7 @@ If you have 'Custom Fields' activated, you can dynamically search any 'Custom Fi
 
 #### XML Sample Request
 
-`GET https://learninglogin.com/api/logins.xml`
+`GET https://learninglogin.com/api/v2/logins.xml`
 
 #### XML Sample Response Body
 
@@ -88,19 +96,19 @@ If you have 'Custom Fields' activated, you can dynamically search any 'Custom Fi
       <username>demo_login2</username>
       <email>demo_login2@learninglogin.com</email>
       <role>Trainee</role>
-   </login>   
+   </login>
 </logins>
 ~~~
 
 ### Show
 
-`https://learninglogin.com/api/logins/:id`
+`https://learninglogin.com/api/v2/logins/:id`
 
 To retrieve the details of a particular login from your account, send a `GET` request to the URL above, only ":id" is required as part of the URL
 
 #### JSON Sample Request
 
-`GET https://learninglogin.com/api/logins/:id`
+`GET https://learninglogin.com/api/v2/logins/:id`
 
 #### JSON Sample Response Body
 
@@ -118,11 +126,11 @@ To retrieve the details of a particular login from your account, send a `GET` re
 
 #### XML Sample Request
 
-`GET https://learninglogin.com/api/logins/:id.xml`
+`GET https://learninglogin.com/api/v2/logins/:id.xml`
 
 #### XML Sample Response Body
 
-`GET https://learninglogin.com/api/logins/:id.xml`
+`GET https://learninglogin.com/api/v2/logins/:id.xml`
 
 ~~~xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -132,14 +140,14 @@ To retrieve the details of a particular login from your account, send a `GET` re
    <last-name>Login</last-name>
    <username>demo_login</username>
    <email>demo_login@learninglogin.com</email>
-   <role>Admin</role>   
+   <role>Admin</role>
    <token>bca51ae57828gf8gf7878gfd87</token>
 </login>
 ~~~
 
 ### Create
 
-`https://learninglogin.com/api/logins`
+`https://learninglogin.com/api/v2/logins`
 
 To create a new login, send a `POST` request to the URL above, it must contain the following parameters:
 
@@ -155,7 +163,7 @@ To create a new login, send a `POST` request to the URL above, it must contain t
 
 #### JSON Sample Request Body
 
-`POST https://learninglogin.com/api/logins`
+`POST https://learninglogin.com/api/v2/logins`
 
 ~~~json
   {
@@ -181,7 +189,7 @@ When a `login` is successfully  created, our API will send a response with the n
     "first_name": 'first',
     "last_name": 'last',
     "username": 'username',
-    "email": 'login@mail.com',    
+    "email": 'login@mail.com',
     "role": 'Trainee',
     "token": 'bca51ae57828gf8gf7878gfd87'
   }
@@ -202,7 +210,7 @@ Errors will be responded with a `HTTP 422` error code and an error description.
 
 #### XML Sample Request Body
 
-`POST https://learninglogin.com/api/logins.xml`
+`POST https://learninglogin.com/api/v2/logins.xml`
 
 ~~~xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -230,8 +238,8 @@ Errors will be responded with a `HTTP 422` error code and an error description.
    <last-name>last</last-name>
    <username>username</username>
    <email>login@mail.com</email>
-    <role-string>Trainee</role-string>   
-   <token>bca51ae57828gf8gf7878gfd87</token>   
+    <role-string>Trainee</role-string>
+   <token>bca51ae57828gf8gf7878gfd87</token>
 </login>
 ~~~
 
@@ -248,7 +256,7 @@ Errors will be responded with a `HTTP 422` error code and an error description.
 
 ### Update
 
-`https://learninglogin.com/api/logins/:id`
+`https://learninglogin.com/api/v2/logins/:id`
 
 To update an existing login, send a `PUT` request to the URL above with the parameters you wish to update with the same format as our #create action.
 
@@ -256,7 +264,7 @@ You can update as many fields as you wish.
 
 #### JSON Sample Request Body
 
-`PUT https://learninglogin.com/api/logins/:id`
+`PUT https://learninglogin.com/api/v2/logins/:id`
 
 An example request body to update a login's name might be:
 
@@ -312,7 +320,7 @@ Errors will be sent with a `HTTP 422 error code, and an error description.
 
 #### XML Sample Request Body
 
-`PUT https://learninglogin.com/api/logins/:id.xml`
+`PUT https://learninglogin.com/api/v2/logins/:id.xml`
 
 ~~~xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -348,7 +356,7 @@ Errors will be sent with a `HTTP 422 error code, and an error description.
 
 ### Delete
 
-`https://learninglogin.com/api/logins/:id`
+`https://learninglogin.com/api/v2/logins/:id`
 
 To remove a login, send a `DELETE` request to the URL above, no parameters are required.
 
@@ -358,11 +366,8 @@ If anything goes wrong, the API will respond with a `HTTP 422` error code and an
 
 #### JSON Sample Request
 
-`DELETE https://learninglogin.com/api/logins/:id`
+`DELETE https://learninglogin.com/api/v2/logins/:id`
 
 #### XML Sample Request
 
-`DELETE https://learninglogin.com/api/logins/:id.xml`
-
-
-
+`DELETE https://learninglogin.com/api/v2/logins/:id.xml`

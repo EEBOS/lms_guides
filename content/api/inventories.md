@@ -10,7 +10,7 @@ The Inventories endpoint is used for assigning courses to users.
 
 ### Assign Units
 
-`https://learninglogin.com/api/inventories/assign_units`
+`https://learninglogin.com/api/v2/inventories/assign_units`
 
 To assign units to a user, send a `POST` request to the URL above with the following parameters:
 
@@ -21,7 +21,7 @@ To assign units to a user, send a `POST` request to the URL above with the follo
 
 #### JSON Sample Request Body
 
-`POST https://learninglogin.com/api/inventories/assign_units`
+`POST https://learninglogin.com/api/v2/inventories/assign_units`
 
 ~~~json
   {
@@ -53,13 +53,13 @@ If something goes wrong, the API will respond with a `HTTP 422` error code and t
 
 #### XML Sample Request Body
 
-`POST https://learninglogin.com/api/inventories/assign_units.xml`
+`POST https://learninglogin.com/api/v2/inventories/assign_units.xml`
 
 ~~~xml
 <?xml version="1.0" encoding="UTF-8"?>
 <content>
   <course-codes type="array">
-     <course-code>JHSC</course-code>    
+     <course-code>JHSC</course-code>
   </course-codes>
   <login-ids type="array">
      <login-id type="integer">1</login-id>
